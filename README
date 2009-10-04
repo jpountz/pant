@@ -1,0 +1,4 @@
+PAnt (Parallel Ant) is an executor implementation which allows targets to run
+concurrently in several threads when possible.
+
+See http://www.jpountz.net/projects/Parallel-Ant.

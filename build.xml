@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<project name="pant" default="package" basedir=".">
+
+  <property name="project.name" value="pant" />
+  <property name="project.version" value="0.1" />
+  <property name="src.dir" value="src/main/java" />
+  <property name="build.dir" value="build" />
+  <property name="build.classes" value="${build.dir}/classes" />
+  <property name="build.jar" value="${build.dir}/${project.name}-${project.version}.jar"/>
+  <property name="lib.dir" value="lib" />
+  <property name="javac.target" value="5" />
+  <property name="javac.source" value="5" />
+
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="*.jar"/>
+  </path>
+
+  <target name="init">
+    <mkdir dir="${build.dir}" />
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${build.classes}" />
+    <javac srcdir="${src.dir}"
+        destdir="${build.classes}"
+        target="${javac.target}"
+        source="${javac.source}">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <target name="package" depends="compile">
+    <jar destfile="${build.jar}"
+        basedir="${build.classes}" />
+  </target>
+
+  <target name="clean">
+    <delete dir="${build.dir}" />
+  </target>
+
+</project>

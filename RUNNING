@@ -1,0 +1,7 @@
+To be able to run targets in several threads:
+
+% ant -lib /path/to/pant-0.1.jar \
+      -Dant.executor.class=net.jpountz.ant.helper.ParallelExecutor \
+      -Dant.executor.threadcount=5 \
+      -logger net.jpountz.ant.helper.ParallelExecutorLogger
+
