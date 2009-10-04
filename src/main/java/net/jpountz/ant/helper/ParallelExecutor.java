@@ -89,6 +89,8 @@ public class ParallelExecutor implements Executor {
 
         /* Get the thread count and create the thread pool */
         int threadCount = getThreadCount(project);
+        // No need to have more threads than targets
+        threadCount = Math.min(threadCount, deps.size());
         project.log("Running tasks in " + threadCount + " thread" +
                 (threadCount > 1 ? "s" : ""), Project.MSG_INFO);
         ExecutorService executor = Executors.newFixedThreadPool(threadCount);
